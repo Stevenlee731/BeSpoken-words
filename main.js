@@ -1,5 +1,4 @@
 /*
-sadsa
 <div class="row">
   <div class="col-sm-4 columns">
     <div class="card">
@@ -57,6 +56,7 @@ var items = [
     description: 'Russel & Hazel, updates the classic coptic journal with a contemporary cover.',
     button: 'Add to Cart',
     learnMore: 'Learn More',
+    link: 'https://google.com',
     image: 'images/10067179gMetallicNotebook_600.jpg'
   }
 ]
@@ -68,7 +68,8 @@ items.forEach(function(item) {
   var $cardBlock = document.createElement('div')
   var $itemName = document.createElement('h4')
   var $itemDescription = document.createElement('p')
-  var $learnMore = document.createElement('p')
+  var $learnMore = document.createElement('a')
+  var $pWrapper = document.createElement('p')
   var $button = document.createElement('a')
 
   $col.appendChild($card)
@@ -76,7 +77,8 @@ items.forEach(function(item) {
   $card.appendChild($cardBlock)
   $cardBlock.appendChild($itemName)
   $cardBlock.appendChild($itemDescription)
-  $cardBlock.appendChild($learnMore)
+  $cardBlock.appendChild($pWrapper)
+  $pWrapper.appendChild($learnMore)
   $cardBlock.appendChild($button)
 
   $col.classList.add('col-sm-4', 'columns')
@@ -88,6 +90,7 @@ items.forEach(function(item) {
   $learnMore.classList.add('card-text')
   $button.classList.add('btn', 'btn-primary')
   $image.setAttribute('src', item.image)
+  $learnMore.setAttribute('href', item.link)
 
   $itemName.textContent = item.name
   $itemDescription.textContent = item.description
