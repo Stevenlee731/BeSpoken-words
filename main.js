@@ -36,6 +36,12 @@
 </div>
 */
 
+// navigation
+
+var navItems = [
+  {}
+]
+
 var items = [
   {
     name: 'Moleskine',
@@ -100,3 +106,7 @@ items.forEach(function(item) {
   var $items = document.querySelector('#items')
   $items.appendChild($col)
 })
+
+
+// Shopping Cart
+var cart = []

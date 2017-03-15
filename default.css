@@ -2,6 +2,15 @@
   margin-top: 20px;
 }
 
-img {
+.card > img {
   padding: 5%;
+}
+
+@font-face {
+  font-family: Besom;
+  src: url('font/Besom.ttf');
+}
+
+#logo-font {
+  font-family: Besom;
 }
