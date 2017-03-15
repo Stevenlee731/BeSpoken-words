@@ -67,7 +67,7 @@ var items = [
   }
 ]
 
-items.forEach(function(item) {
+function renderItem(item) {
   var $col = document.createElement('div')
   var $card = document.createElement('div')
   var $image = document.createElement('img')
@@ -103,10 +103,25 @@ items.forEach(function(item) {
   $learnMore.textContent = item.learnMore
   $button.textContent = item.button
 
-  var $items = document.querySelector('#items')
-  $items.appendChild($col)
+  return $col
+}
+
+var $items = document.querySelector('#items')
+
+items.forEach(function (item) {
+  var $item = renderItem(item)
+  $items.appendChild($item)
 })
+
+
 
 
 // Shopping Cart
 var cart = []
+
+// Main Page
+
+// functions
+function addToCart(function) {
+
+}
