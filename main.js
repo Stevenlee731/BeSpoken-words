@@ -44,6 +44,7 @@ var navItems = [
 
 var items = [
   {
+    id: 1,
     name: 'Moleskine',
     description: 'A blending of tones, fabric and texture, this notebook is where touch and colors meet.',
     learnMore: 'Learn More',
@@ -51,6 +52,7 @@ var items = [
     image: 'images/10057683GLargeSoftRuledNotebook_600.jpg'
   },
   {
+    id: 2,
     name: 'Poppin',
     description: 'Think of our Pippin Medium Soft Cover Notebook as your trusty right (or left!) - hand-man.',
     learnMore: 'Learn More',
@@ -58,6 +60,7 @@ var items = [
     image: 'images/10067053ArtisanJournalCalhoun_600.jpg'
   },
   {
+    id: 3,
     name: 'Calhoun',
     description: 'Russel & Hazel, updates the classic coptic journal with a contemporary cover.',
     button: 'Add to Cart',
@@ -67,7 +70,9 @@ var items = [
   }
 ]
 
-items.forEach(function(item) {
+
+// Main Page
+function renderItem(item) {
   var $col = document.createElement('div')
   var $card = document.createElement('div')
   var $image = document.createElement('img')
@@ -103,10 +108,42 @@ items.forEach(function(item) {
   $learnMore.textContent = item.learnMore
   $button.textContent = item.button
 
-  var $items = document.querySelector('#items')
-  $items.appendChild($col)
+  return $col
+}
+
+var $items = document.querySelector('#items')
+
+items.forEach(function (item) {
+  var $item = renderItem(item)
+  $items.appendChild($item)
 })
 
+// Detailed View
 
-// Shopping Cart
-var cart = []
+/*
+document.body.addEventListener('click', function(event) {
+  var id = event.target.getAttribute('data-id')
+  var currentItem
+  items.forEach(function(item) {
+    if (item.id === id) {
+      currentItem = item
+    }
+  })
+
+  var $detailedItem = detailedItem(currentItem)
+  var $views = document.querySelector('.container')
+  var $details = document.querySelector('#details')
+  swap($views, $details)
+})
+
+ swap(viewsContainer, view) {
+  // Hide the old active view.
+  var $active = viewsContainer.querySelector('.active')
+  $active.classList.remove('active')
+  $active.classList.add('hidden')
+
+  // Show the new view.
+  view.classList.remove('hidden')
+  view.classList.add('active')
+}
+*/
