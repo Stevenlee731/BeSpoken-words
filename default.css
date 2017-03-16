@@ -2,10 +2,6 @@
   margin-top: 20px;
 }
 
-.card > img {
-  padding: 5%;
-}
-
 @font-face {
   font-family: Besom;
   src: url('font/Besom.ttf');
