@@ -1,2 +1,2 @@
 # BeSpoken-words
-Website where you can purchase artisan notebooks
+A website where shoppers can purchase artisan notebooks
