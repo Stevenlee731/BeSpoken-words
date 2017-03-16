@@ -109,8 +109,9 @@ itemsDetail.forEach(function (item) {
 
 document.body.addEventListener('click', function(event) {
   var id = event.target.getAttribute('data-set')
-  itemsDetail.forEach( function (item) {
-    if (id === itemsDetail.id) {
+  console.log(id)
+  items.forEach( function (item) {
+    if (id === items.name) {
     console.log('yes')
   } else {
     console.log('no')
