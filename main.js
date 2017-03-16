@@ -70,7 +70,7 @@ function renderItem(item) {
   $button.classList.add('btn', 'btn-primary')
   $button.setAttribute('href', item.addToCart)
   $image.setAttribute('src', item.image)
-  $learnMore.setAttribute('href', item.link)
+  $learnMore.setAttribute('href', item.link, 'data-set', item.id)
 
   $itemName.textContent = item.name
   $itemDescription.textContent = item.description
@@ -154,7 +154,6 @@ function renderDetails(item) {
   $itemCost.textContent = item.cost
   $button.textContent = item.button
 
-
   return $col
 }
 
@@ -165,30 +164,12 @@ itemsDetail.forEach(function (item) {
   $itemsDetail.appendChild($item)
 })
 
-/*
 document.body.addEventListener('click', function(event) {
   var id = event.target.getAttribute('data-id')
-  var currentItem
-  items.forEach(function(item) {
-    if (item.id === id) {
-      currentItem = item
+  items.forEach( function() {
+    if (items.id === id) {
+      console.log('yes')
     }
-  })
 
-  var $detailedItem = detailedItem(currentItem)
-  var $views = document.querySelector('.container')
-  var $details = document.querySelector('#details')
-  swap($views, $details)
-})
-
- swap(viewsContainer, view) {
-  // Hide the old active view.
-  var $active = viewsContainer.querySelector('.active')
-  $active.classList.remove('active')
-  $active.classList.add('hidden')
-
-  // Show the new view.
-  view.classList.remove('hidden')
-  view.classList.add('active')
-}
-*/
+  }
+)

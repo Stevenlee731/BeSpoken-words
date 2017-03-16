@@ -5,6 +5,7 @@ var items = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     addToCart: 'www.google.com',
     learnMore: 'Learn More',
+    link: '#',
     button: 'Add to Cart',
     image: 'images/10057683GLargeSoftRuledNotebook_600.jpg'
   },
@@ -14,6 +15,7 @@ var items = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     addToCart: 'www.google.com',
     learnMore: 'Learn More',
+    link: '#',
     button: 'Add to Cart',
     image: 'images/10068166MediumPoppingSoftCoverNotebo.jpg'
   },
@@ -24,7 +26,7 @@ var items = [
     button: 'Add to Cart',
     addToCart: 'www.google.com',
     learnMore: 'Learn More',
-    link: 'https://google.com',
+    link: '#',
     image: 'images/Confidant_Perspective_v03.jpg'
   }
 ]
