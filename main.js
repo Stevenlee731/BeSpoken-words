@@ -1,5 +1,5 @@
 // List View
-function renderItem(item) {
+function renderListItem(item) {
   var $col = document.createElement('div')
   var $card = document.createElement('div')
   var $image = document.createElement('img')
@@ -43,14 +43,14 @@ function renderItem(item) {
 // iterate through and add ITEM LIST to DOM
 var $listItems = document.querySelector('#items')
 
-items.forEach(function (item) {
-  var $listItem = renderItem(item)
+itemsList.forEach(function (item) {
+  var $listItem = renderListItem(item)
   $listItems.appendChild($listItem)
 })
 
-
-// Detailed View
-function renderDetails(item) {
+//
+// // Detailed View
+function renderDetail(item) {
   var $col = document.createElement('div')
   var $card = document.createElement('div')
   var $image = document.createElement('img')
@@ -68,7 +68,7 @@ function renderDetails(item) {
   $cardBlock.appendChild($itemCost)
   $cardBlock.appendChild($button)
 
-  $col.classList.add('col-sm-12')
+  $col.classList.add('col-sm-12', 'columns')
   $card.classList.add('card')
   $image.classList.add('card-img-top', 'img-fluid')
   $cardBlock.classList.add('card-block')
@@ -86,39 +86,40 @@ function renderDetails(item) {
 
   return $col
 }
-
-// iterate and add ITEM DETAILS to DOM
-var $itemsDetail = document.querySelector('#details')
-
-itemsDetail.forEach(function (item) {
-  var $item = renderDetails(item)
-  $itemsDetail.appendChild($item)
-})
+//
+// // iterate and add ITEM DETAILS to DOM
 
 
-// document.body.addEventListener('click', function(event) {
-//   var id = event.target.getAttribute('data-set')
-//   if (itemsDetails.id === 'id') {
-//     console.log('yes')
-//     var $item = document.querySelector('#items')
-//     $item.remove()
-//   } else {
-//     return console.log('no')
-//   }
+
+//
+// itemsDetail.forEach(function (item) {
+//   var $item = renderDetail(item)
+//   $itemsDetail.appendChild($item)
 // })
+
+// function hideDetails(function (){
+//
+// }
 
 document.body.addEventListener('click', function(event) {
   var id = event.target.getAttribute('data-set')
-  console.log(id)
-  items.forEach( function (item) {
-    if (id === items.name) {
-    console.log('yes')
-  } else {
-    console.log('no')
-  }
-})
-})
 
-function swapView($views, container) {
-  console.log('test')
-}
+  itemsList.forEach( function (item) {
+    if (id === item.id.toString()) {
+    console.log(id)
+    var $itemsDetail = document.querySelector('#details')
+    $listItems.classList.add('hidden')
+    $itemsDetail.classList.remove('hidden')
+    var $renderDetail = renderDetail(item)
+    $itemsDetail.appendChild($renderDetail)
+
+// insert renderDetail
+
+  }
+  return
+})
+})
+//
+// function swapView($views, container) {
+//   console.log('test')
+// }

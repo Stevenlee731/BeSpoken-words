@@ -10,3 +10,7 @@
 #logo-font {
   font-family: Besom;
 }
+
+.hidden {
+  display: none;
+}
