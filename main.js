@@ -27,7 +27,7 @@ function renderListItem(item) {
   $itemDescription.classList.add('card-text')
   $learnMore.classList.add('card-text')
   $button.classList.add('btn', 'btn-primary')
-  $button.setAttribute('href', item.addToCart)
+  $button.setAttribute('href', "#")
   $image.setAttribute('src', item.imageList)
   $image.setAttribute('data-set', item.id)
   $learnMore.setAttribute('href', item.link)
@@ -80,7 +80,7 @@ function renderDetail(item) {
   $itemCost.setAttribute('style', "font-weight: bold")
   $button.classList.add('btn', 'btn-primary', 'btn-margin')
   $cancelButton.classList.add('btn', 'btn-margin', 'btn-secondary')
-  $button.setAttribute('href', item.addToCart)
+  $button.setAttribute('href', "#")
   $cancelButton.setAttribute('data-set', 'back')
   $image.setAttribute('src', item.imageDetail)
 
