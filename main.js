@@ -1,4 +1,4 @@
-// List View
+// DOM List View
 function renderListItem(item) {
   var $col = document.createElement('div')
   var $card = document.createElement('div')
@@ -49,8 +49,7 @@ itemsList.forEach(function (item) {
   $listItems.appendChild($listItem)
 })
 
-//
-// // Detailed View
+// DOM Detailed View
 function renderDetail(item) {
   var $col = document.createElement('div')
   var $card = document.createElement('div')
@@ -93,21 +92,8 @@ function renderDetail(item) {
 
   return $col
 }
-//
-// // iterate and add ITEM DETAILS to DOM
 
-
-
-//
-// itemsDetail.forEach(function (item) {
-//   var $item = renderDetail(item)
-//   $itemsDetail.appendChild($item)
-// })
-
-// function hideDetails(function (){
-//
-// }
-
+// Click "learn more" to switch to "Detail view"
 document.body.addEventListener('click', function(event) {
   var id = event.target.getAttribute('data-set')
 
@@ -123,6 +109,7 @@ document.body.addEventListener('click', function(event) {
 })
 })
 
+// Click "go Back" to switch to "list view"
 document.body.addEventListener('click', function(event) {
   if (event.target.getAttribute('data-set') === 'back')  {
     $listItems.classList.remove('hidden')
@@ -132,7 +119,3 @@ document.body.addEventListener('click', function(event) {
     $itemsDetail.removeChild($itemsDetailList)
   }
 })
-//
-// function swapView($views, container) {
-//   console.log('test')
-// }
