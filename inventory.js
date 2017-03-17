@@ -2,65 +2,85 @@ var itemsList = [
   {
     id: 1,
     name: 'Moleskine',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    descriptionList: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    descriptionDetail: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     addToCart: 'www.google.com',
     learnMore: 'Learn More',
     link: '#',
     button: 'Add to Cart',
-    image: 'images/10057683GLargeSoftRuledNotebook_600.jpg'
-  },
-  {
-    id: 2,
-    name: 'Poppin',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    addToCart: 'www.google.com',
-    learnMore: 'Learn More',
-    link: '#',
-    button: 'Add to Cart',
-    image: 'images/10068166MediumPoppingSoftCoverNotebo.jpg'
-  },
-  {
-    id: 3,
-    name: 'Baron Fig',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    button: 'Add to Cart',
-    addToCart: 'www.google.com',
-    learnMore: 'Learn More',
-    link: '#',
-    image: 'images/Confidant_Perspective_v03.jpg'
-  }
-]
-
-var itemsDetail = [
-  {
-    id: 1,
-    name: 'Moleskine',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    addToCart: 'www.google.com',
-    learnMore: 'Learn More',
-    button: 'Add to Cart',
+    cancelButton: 'Go Back',
     cost: '$13.99',
-    image: 'images/Moleskin-detail.jpg'
+    imageList: 'images/10057683GLargeSoftRuledNotebook_600.jpg',
+    imageDetail: 'images/Moleskin-detail.jpg'
   },
   {
     id: 2,
     name: 'Poppin',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    descriptionList: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    descriptionDetail: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     addToCart: 'www.google.com',
     learnMore: 'Learn More',
+    link: '#',
     button: 'Add to Cart',
-    cost: '$15.99',
-    image: 'images/01 Header.jpg'
+    cancelButton: 'Go Back',
+    cost: '$13.99',
+    imageList: 'images/10068166MediumPoppingSoftCoverNotebo.jpg',
+    imageDetail: 'images/poppin-detail.jpg'
   },
   {
     id: 3,
     name: 'Baron Fig',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    button: 'Add to Cart',
+    descriptionList: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    descriptionDetail: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     addToCart: 'www.google.com',
     learnMore: 'Learn More',
-    link: 'https://google.com',
-    cost: '$18.99',
-    image: 'images/ks_squire_photos-wnotebooks_02_2048x2048.jpg'
+    link: '#',
+    button: 'Add to Cart',
+    cancelButton: 'Go Back',
+    cost: '$13.99',
+    imageList: 'images/Confidant_Perspective_v03.jpg',
+    imageDetail: 'images/baron-fig-notebook-xl.jpg'
+  },
+  {
+    id: 4,
+    name: 'Field Notes',
+    descriptionList: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    descriptionDetail: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    addToCart: 'www.google.com',
+    learnMore: 'Learn More',
+    link: '#',
+    button: 'Add to Cart',
+    cancelButton: 'Go Back',
+    cost: '$8.99',
+    imageList: 'images/FN-02-Original-Ruled-B.jpg',
+    imageDetail: 'images/fieldnotes.jpg'
+  },
+  {
+    id: 5,
+    name: 'Monsieur',
+    descriptionList: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    descriptionDetail: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    addToCart: 'www.google.com',
+    learnMore: 'Learn More',
+    link: '#',
+    button: 'Add to Cart',
+    cancelButton: 'Go Back',
+    cost: '$21.99',
+    imageList: 'images/b1-253x300.png',
+    imageDetail: 'images/Monsieur-detail.jpg'
+  },
+  {
+    id: 6,
+    name: 'Leuchtturm',
+    descriptionList: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    descriptionDetail: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    addToCart: 'www.google.com',
+    learnMore: 'Learn More',
+    link: '#',
+    button: 'Add to Cart',
+    cancelButton: 'Go Back',
+    cost: '$19.99',
+    imageList: 'images/bullet-journal.jpg',
+    imageDetail: 'images/Leuchtturm.jpg'
   }
 ]
