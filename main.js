@@ -119,3 +119,23 @@ document.body.addEventListener('click', function(event) {
     $itemsDetail.removeChild($itemsDetailList)
   }
 })
+
+
+// Shopping Cart
+var shoppingCart = []
+
+// Add to Cart function
+
+// // click on add to cart
+// document.body.addEventListener('click', function(event) {
+//   var addToCart =
+//   if (event.target.getAttribute('data-set') === id) {
+//     for (var i = 0; i < itemsList.length; i++)
+//     shoppingCart.push(...itemsList[i]);
+//   }
+//
+// }
+// )
+// // updates
+
+// Display cart quantity on page load
