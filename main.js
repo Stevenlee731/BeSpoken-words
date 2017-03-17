@@ -1,78 +1,5 @@
-/*
-<div class="row">
-  <div class="col-sm-4 columns">
-    <div class="card">
-      <img class="card-img-top img-fluid" src="images/10057683GLargeSoftRuledNotebook_600.jpg" alt="Card image cap">
-      <div class="card-block">
-        <h4 class="card-title">Moleskine</h4>
-        <p class="card-text">A blending of tones, fabric and texture, this notebook is where touch and colors meet.</p>
-        <p class="card-text">Learn More</p>
-        <a href="#" class="btn btn-primary">Add to Cart</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4 columns">
-    <div class="card">
-      <img class="card-img-top img-fluid" src="images/10067179gMetallicNotebook_600.jpg" alt="Card image cap">
-      <div class="card-block">
-        <h4 class="card-title">Pippin</h4>
-        <p class="card-text">Think of our Pippin Medium Soft Cover Notebook as your trusty right (or left!) - hand-man.</p>
-        <p class="card-text">Learn More</p>
-        <a href="#" class="btn btn-primary">Add to Cart</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4 columns">
-    <div class="card">
-      <img class="card-img-top img-fluid" src="images/10067053ArtisanJournalCalhoun_600.jpg" alt="Card image cap">
-      <div class="card-block">
-        <h4 class="card-title">Calhoun</h4>
-        <p class="card-text">Russel &amp; Hazel, updates the classic coptic journal with a contemporary cover.</p>
-        <p class="card-text">Learn More</p>
-        <a href="#" class="btn btn-primary">Add to Cart</a>
-      </div>
-    </div>
-  </div>
-</div>
-*/
-
-// navigation
-
-var navItems = [
-  {}
-]
-
-var items = [
-  {
-    id: 1,
-    name: 'Moleskine',
-    description: 'A blending of tones, fabric and texture, this notebook is where touch and colors meet.',
-    learnMore: 'Learn More',
-    button: 'Add to Cart',
-    image: 'images/10057683GLargeSoftRuledNotebook_600.jpg'
-  },
-  {
-    id: 2,
-    name: 'Poppin',
-    description: 'Think of our Pippin Medium Soft Cover Notebook as your trusty right (or left!) - hand-man.',
-    learnMore: 'Learn More',
-    button: 'Add to Cart',
-    image: 'images/10067053ArtisanJournalCalhoun_600.jpg'
-  },
-  {
-    id: 3,
-    name: 'Calhoun',
-    description: 'Russel & Hazel, updates the classic coptic journal with a contemporary cover.',
-    button: 'Add to Cart',
-    learnMore: 'Learn More',
-    link: 'https://google.com',
-    image: 'images/10067179gMetallicNotebook_600.jpg'
-  }
-]
-
-
-// Main Page
-function renderItem(item) {
+// DOM List View
+function renderListItem(item) {
   var $col = document.createElement('div')
   var $card = document.createElement('div')
   var $image = document.createElement('img')
@@ -100,50 +27,95 @@ function renderItem(item) {
   $itemDescription.classList.add('card-text')
   $learnMore.classList.add('card-text')
   $button.classList.add('btn', 'btn-primary')
-  $image.setAttribute('src', item.image)
+  $button.setAttribute('href', "#")
+  $image.setAttribute('src', item.imageList)
+  $image.setAttribute('data-set', item.id)
   $learnMore.setAttribute('href', item.link)
+  $learnMore.setAttribute('data-set', item.id)
 
   $itemName.textContent = item.name
-  $itemDescription.textContent = item.description
+  $itemDescription.textContent = item.descriptionList
   $learnMore.textContent = item.learnMore
   $button.textContent = item.button
 
   return $col
 }
 
-var $items = document.querySelector('#items')
+// iterate through and add ITEM LIST to DOM
+var $listItems = document.querySelector('#items')
 
-items.forEach(function (item) {
-  var $item = renderItem(item)
-  $items.appendChild($item)
+itemsList.forEach(function (item) {
+  var $listItem = renderListItem(item)
+  $listItems.appendChild($listItem)
 })
 
-// Detailed View
+// DOM Detailed View
+function renderDetail(item) {
+  var $col = document.createElement('div')
+  var $card = document.createElement('div')
+  var $image = document.createElement('img')
+  var $cardBlock = document.createElement('div')
+  var $itemName = document.createElement('h3')
+  var $itemDescription = document.createElement('p')
+  var $itemCost = document.createElement('p')
+  var $button = document.createElement('a')
+  var $cancelButton = document.createElement('a')
 
-/*
-document.body.addEventListener('click', function(event) {
-  var id = event.target.getAttribute('data-id')
-  var currentItem
-  items.forEach(function(item) {
-    if (item.id === id) {
-      currentItem = item
-    }
-  })
+  $col.appendChild($card)
+  $card.appendChild($image)
+  $card.appendChild($cardBlock)
+  $cardBlock.appendChild($itemName)
+  $cardBlock.appendChild($itemDescription)
+  $cardBlock.appendChild($itemCost)
+  $cardBlock.appendChild($button)
+  $cardBlock.appendChild($cancelButton)
 
-  var $detailedItem = detailedItem(currentItem)
-  var $views = document.querySelector('.container')
-  var $details = document.querySelector('#details')
-  swap($views, $details)
-})
+  $col.classList.add('col-sm-12', 'columns', 'details')
+  $card.classList.add('card')
+  $image.classList.add('card-img-top', 'img-fluid')
+  $cardBlock.classList.add('card-block')
+  $itemName.classList.add('card-title')
+  $itemDescription.classList.add('card-text')
+  $itemCost.classList.add('card-text')
+  $itemCost.setAttribute('style', "font-weight: bold")
+  $button.classList.add('btn', 'btn-primary', 'btn-margin')
+  $cancelButton.classList.add('btn', 'btn-margin', 'btn-secondary')
+  $button.setAttribute('href', "#")
+  $cancelButton.setAttribute('data-set', 'back')
+  $image.setAttribute('src', item.imageDetail)
 
- swap(viewsContainer, view) {
-  // Hide the old active view.
-  var $active = viewsContainer.querySelector('.active')
-  $active.classList.remove('active')
-  $active.classList.add('hidden')
+  $itemName.textContent = item.name
+  $itemDescription.textContent = item.descriptionDetail
+  $itemCost.textContent = item.cost
+  $button.textContent = item.button
+  $cancelButton.textContent = item.cancelButton
 
-  // Show the new view.
-  view.classList.remove('hidden')
-  view.classList.add('active')
+  return $col
 }
-*/
+
+// Click "learn more" to switch to "Detail view"
+document.body.addEventListener('click', function(event) {
+  var id = event.target.getAttribute('data-set')
+
+  itemsList.forEach( function (item) {
+    if (id === item.id.toString()) {
+    console.log(id)
+    var $itemsDetail = document.querySelector('#details')
+    $listItems.classList.add('hidden')
+    $itemsDetail.classList.remove('hidden')
+    var $renderDetail = renderDetail(item)
+    $itemsDetail.appendChild($renderDetail)
+  }
+})
+})
+
+// Click "go Back" to switch to "list view"
+document.body.addEventListener('click', function(event) {
+  if (event.target.getAttribute('data-set') === 'back')  {
+    $listItems.classList.remove('hidden')
+    var $itemsDetail = document.querySelector('#details')
+    $itemsDetail.classList.add('hidden')
+    var $itemsDetailList = document.querySelector('.details')
+    $itemsDetail.removeChild($itemsDetailList)
+  }
+})
