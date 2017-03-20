@@ -28,6 +28,7 @@ function renderListItem(item) {
   $learnMore.classList.add('card-text')
   $button.classList.add('btn', 'btn-primary')
   $button.setAttribute('href', "#")
+  $button.setAttribute('data-set', item.id)
   $image.setAttribute('src', item.imageList)
   $image.setAttribute('data-set', item.id)
   $learnMore.setAttribute('href', item.link)
@@ -79,6 +80,7 @@ function renderDetail(item) {
   $itemCost.classList.add('card-text')
   $itemCost.setAttribute('style', "font-weight: bold")
   $button.classList.add('btn', 'btn-primary', 'btn-margin')
+  $button.setAttribute('data-set', item.id)
   $cancelButton.classList.add('btn', 'btn-margin', 'btn-secondary')
   $button.setAttribute('href', "#")
   $cancelButton.setAttribute('data-set', 'back')
@@ -93,10 +95,20 @@ function renderDetail(item) {
   return $col
 }
 
-// Click "learn more" to switch to "Detail view"
+var shoppingCart = []
+
+// Cart Amount
+var $cart = document.querySelector('li > a')
+var $cartTotal = document.createElement('span')
+$cartTotal.classList.add('badge', 'badge-success')
+$cart.appendChild($cartTotal)
+$cartTotal.textContent = shoppingCart.length
+
+
+// Click "learn more" to switch to "Detail view" and Add to cart
 document.body.addEventListener('click', function(event) {
   var id = event.target.getAttribute('data-set')
-
+  if (event.target.textContent === "Learn More") {
   itemsList.forEach( function (item) {
     if (id === item.id.toString()) {
     console.log(id)
@@ -105,33 +117,44 @@ document.body.addEventListener('click', function(event) {
     $itemsDetail.classList.remove('hidden')
     var $renderDetail = renderDetail(item)
     $itemsDetail.appendChild($renderDetail)
+    }
+  })
+} else if (event.target.textContent === "Add to Cart") {
+  itemsList.forEach( function (item) {
+    if (id === item.id.toString()) {
+       shoppingCart.push('item');
+       console.log('id')
+    }
+  })
+}})
+
+
+
+// go back
+document.body.addEventListener('click', function(event){
+  var id = event.target.getAttribute('data-set')
+  var $buttonId = document.body.querySelector('.btn')
+  switch (event.target.getAttribute('data-set')) {
+    case "addToCart":
+      console.log('yayay')
+      break;
+    case "back":
+    if (event.target.getAttribute('data-set') === 'back')  {
+      $listItems.classList.remove('hidden')
+      var $itemsDetail = document.querySelector('#details')
+      $itemsDetail.classList.add('hidden')
+      var $itemsDetailList = document.querySelector('.details')
+      $itemsDetail.removeChild($itemsDetailList)
+      break;
+    }
+    default:
+
   }
+
+
+
+
 })
-})
-
-// Click "go Back" to switch to "list view"
-document.body.addEventListener('click', function(event) {
-  if (event.target.getAttribute('data-set') === 'back')  {
-    $listItems.classList.remove('hidden')
-    var $itemsDetail = document.querySelector('#details')
-    $itemsDetail.classList.add('hidden')
-    var $itemsDetailList = document.querySelector('.details')
-    $itemsDetail.removeChild($itemsDetailList)
-  }
-})
-
-
-// Shopping Cart
-var shoppingCart = []
-
-// Add to Cart function
-
-// click on add to cart
-var $addToCart = document.body.querySelectorAll('div > a')
-$addToCart.addEventListener('click', function() {
-  console.log('woo')
-})
-
 //   var id = event.target.getAttribute('data-set')
 //   console.log('Hi')
 //   //   for (var i = 0; i < itemsList.length; i++) {

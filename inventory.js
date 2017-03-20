@@ -84,3 +84,6 @@ var itemsList = [
     imageDetail: 'images/Leuchtturm.jpg'
   }
 ]
+
+// Shopping Cart
+var shoppingCart = []
