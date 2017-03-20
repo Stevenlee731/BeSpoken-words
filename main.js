@@ -27,7 +27,7 @@ function renderListItem(item) {
   $itemDescription.classList.add('card-text')
   $learnMore.classList.add('card-text')
   $button.classList.add('btn', 'btn-primary')
-  $button.setAttribute('href', "#")
+  $button.setAttribute('href', "javaScript:void(0);")
   $button.setAttribute('data-set', item.id)
   $image.setAttribute('src', item.imageList)
   $image.setAttribute('data-set', item.id)
@@ -82,7 +82,7 @@ function renderDetail(item) {
   $button.classList.add('btn', 'btn-primary', 'btn-margin')
   $button.setAttribute('data-set', item.id)
   $cancelButton.classList.add('btn', 'btn-margin', 'btn-secondary')
-  $button.setAttribute('href', "#")
+  $button.setAttribute('href', "javaScript:void(0);")
   $cancelButton.setAttribute('data-set', 'back')
   $image.setAttribute('src', item.imageDetail)
 
@@ -95,12 +95,11 @@ function renderDetail(item) {
   return $col
 }
 
-var shoppingCart = []
 
 // Cart Amount
 var $cart = document.querySelector('li > a')
 var $cartTotal = document.createElement('span')
-$cartTotal.classList.add('badge', 'badge-success')
+$cartTotal.classList.add('badge', 'badge-info')
 $cart.appendChild($cartTotal)
 $cartTotal.textContent = shoppingCart.length
 
@@ -123,7 +122,7 @@ document.body.addEventListener('click', function(event) {
   itemsList.forEach( function (item) {
     if (id === item.id.toString()) {
        shoppingCart.push('item');
-       console.log('id')
+       $cartTotal.textContent = shoppingCart.length
     }
   })
 }})
