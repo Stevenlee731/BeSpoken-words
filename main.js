@@ -126,16 +126,22 @@ var shoppingCart = []
 
 // Add to Cart function
 
-// // click on add to cart
-// document.body.addEventListener('click', function(event) {
-//   var addToCart =
-//   if (event.target.getAttribute('data-set') === id) {
-//     for (var i = 0; i < itemsList.length; i++)
-//     shoppingCart.push(...itemsList[i]);
-//   }
-//
+// click on add to cart
+var $addToCart = document.body.querySelectorAll('div > a')
+$addToCart.addEventListener('click', function() {
+  console.log('woo')
+})
+
+//   var id = event.target.getAttribute('data-set')
+//   console.log('Hi')
+//   //   for (var i = 0; i < itemsList.length; i++) {
+//   //     if (event.target.getAttribute('data-set') === id) {
+//   //     shoppingCart.push(...itemsList[i]);
+//   //   }    // updates cart quantity
+//   // }
+//   //
 // }
 // )
 // // updates
-
-// Display cart quantity on page load
+//
+// // Display cart quantity on page load
