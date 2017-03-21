@@ -1,3 +1,39 @@
+// Global Variables
+var $viewList = ['#items', '#details', '#checkout']
+var $listItems = document.querySelector('#items')
+var $detailItems = document.querySelector('#details')
+var $checkoutItems = document.querySelector('#checkout')
+
+// Cart Amount
+var $cart = document.querySelector('#cart')
+var $cartTotal = document.createElement('span')
+$cartTotal.classList.add('badge', 'badge-info')
+$cart.appendChild($cartTotal)
+$cartTotal.textContent = shoppingCart.length
+
+// Change Views
+function changeView(viewList, activeView) {
+  viewList.forEach(function (view) {
+    var $view = document.querySelector(view)
+    $view.classList.add('hidden')
+  })
+  var $activeView = document.querySelector(activeView)
+  $activeView.classList.remove('hidden')
+}
+
+// Add to Cart
+function addToCart(item) {
+  shoppingCart.push(item);
+  $cartTotal.textContent = shoppingCart.length
+}
+
+// Clear div
+function clearDiv(parent, child) {
+  var $parent = document.querySelector(parent)
+  var $item = document.querySelector(child)
+  $parent.removeChild($item)
+}
+
 // DOM List View
 function renderListItem(item) {
   var $col = document.createElement('div')
@@ -8,7 +44,7 @@ function renderListItem(item) {
   var $itemDescription = document.createElement('p')
   var $learnMore = document.createElement('a')
   var $pWrapper = document.createElement('p')
-  var $button = document.createElement('a')
+  var $addToCartButton = document.createElement('a')
 
   $col.appendChild($card)
   $card.appendChild($image)
@@ -17,7 +53,7 @@ function renderListItem(item) {
   $cardBlock.appendChild($itemDescription)
   $cardBlock.appendChild($pWrapper)
   $pWrapper.appendChild($learnMore)
-  $cardBlock.appendChild($button)
+  $cardBlock.appendChild($addToCartButton)
 
   $col.classList.add('col-sm-4', 'columns')
   $card.classList.add('card')
@@ -26,9 +62,9 @@ function renderListItem(item) {
   $itemName.classList.add('card-title')
   $itemDescription.classList.add('card-text')
   $learnMore.classList.add('card-text')
-  $button.classList.add('btn', 'btn-primary')
-  $button.setAttribute('href', "javaScript:void(0);")
-  $button.setAttribute('data-set', item.id)
+  $addToCartButton.classList.add('btn', 'btn-primary')
+  $addToCartButton.setAttribute('href', "javaScript:void(0);")
+  $addToCartButton.setAttribute('data-set', item.id)
   $image.setAttribute('src', item.imageList)
   $image.setAttribute('data-set', item.id)
   $learnMore.setAttribute('href', item.link)
@@ -37,13 +73,10 @@ function renderListItem(item) {
   $itemName.textContent = item.name
   $itemDescription.textContent = item.descriptionList
   $learnMore.textContent = item.learnMore
-  $button.textContent = item.button
+  $addToCartButton.textContent = item.addToCartButton
 
   return $col
 }
-
-// iterate through and add ITEM LIST to DOM
-var $listItems = document.querySelector('#items')
 
 itemsList.forEach(function (item) {
   var $listItem = renderListItem(item)
@@ -59,7 +92,7 @@ function renderDetail(item) {
   var $itemName = document.createElement('h3')
   var $itemDescription = document.createElement('p')
   var $itemCost = document.createElement('p')
-  var $button = document.createElement('a')
+  var $addToCartButton = document.createElement('a')
   var $cancelButton = document.createElement('a')
 
   $col.appendChild($card)
@@ -68,7 +101,7 @@ function renderDetail(item) {
   $cardBlock.appendChild($itemName)
   $cardBlock.appendChild($itemDescription)
   $cardBlock.appendChild($itemCost)
-  $cardBlock.appendChild($button)
+  $cardBlock.appendChild($addToCartButton)
   $cardBlock.appendChild($cancelButton)
 
   $col.classList.add('col-sm-12', 'columns', 'details')
@@ -79,71 +112,41 @@ function renderDetail(item) {
   $itemDescription.classList.add('card-text')
   $itemCost.classList.add('card-text')
   $itemCost.setAttribute('style', "font-weight: bold")
-  $button.classList.add('btn', 'btn-primary', 'btn-margin')
-  $button.setAttribute('data-set', item.id)
+  $addToCartButton.classList.add('btn', 'btn-primary', 'btn-margin')
+  $addToCartButton.setAttribute('data-set', item.id)
   $cancelButton.classList.add('btn', 'btn-margin', 'btn-secondary')
-  $button.setAttribute('href', "javaScript:void(0);")
+  $addToCartButton.setAttribute('href', "javaScript:void(0);")
   $cancelButton.setAttribute('data-set', 'back')
   $image.setAttribute('src', item.imageDetail)
 
   $itemName.textContent = item.name
   $itemDescription.textContent = item.descriptionDetail
   $itemCost.textContent = item.cost
-  $button.textContent = item.button
+  $addToCartButton.textContent = item.addToCartButton
   $cancelButton.textContent = item.cancelButton
 
   return $col
 }
 
-
-// Cart Amount
-var $cart = document.querySelector('li > a')
-var $cartTotal = document.createElement('span')
-$cartTotal.classList.add('badge', 'badge-info')
-$cart.appendChild($cartTotal)
-$cartTotal.textContent = shoppingCart.length
-
-
-// Click "learn more" to switch to "Detail view" and Add to cart
+// buttons
 document.body.addEventListener('click', function(event) {
   var id = event.target.getAttribute('data-set')
   if (event.target.textContent === "Learn More") {
-  itemsList.forEach( function (item) {
-    if (id === item.id.toString()) {
-    console.log(id)
-    var $itemsDetail = document.querySelector('#details')
-    $listItems.classList.add('hidden')
-    $itemsDetail.classList.remove('hidden')
-    var $renderDetail = renderDetail(item)
-    $itemsDetail.appendChild($renderDetail)
+    itemsList.forEach( function (item) {
+      if (id === item.id.toString()) {
+        changeView($viewList, '#details')
+        var $renderDetail = renderDetail(item)
+        $detailItems.appendChild($renderDetail)
+      }
+    })
+  } else if (event.target.getAttribute('data-set') === 'back') {
+      changeView($viewList, '#items')
+      clearDiv('#details', '.details')
+  } else if (event.target.textContent === "Add to Cart") {
+      itemsList.forEach( function (item) {
+        if (id === item.id.toString()) {
+         addToCart(item)
+        }
+      })
     }
-  })
-} else if (event.target.textContent === "Add to Cart") {
-  itemsList.forEach( function (item) {
-    if (id === item.id.toString()) {
-       shoppingCart.push('item');
-       $cartTotal.textContent = shoppingCart.length
-    }
-  })
-}})
-
-// go back
-document.body.addEventListener('click', function(event){
-  var id = event.target.getAttribute('data-set')
-  var $buttonId = document.body.querySelector('.btn')
-  switch (event.target.getAttribute('data-set')) {
-    case "addToCart":
-      console.log('yayay')
-      break;
-    case "back":
-    if (event.target.getAttribute('data-set') === 'back')  {
-      $listItems.classList.remove('hidden')
-      var $itemsDetail = document.querySelector('#details')
-      $itemsDetail.classList.add('hidden')
-      var $itemsDetailList = document.querySelector('.details')
-      $itemsDetail.removeChild($itemsDetailList)
-      break;
-    }
-    default:
-  }
 })
