@@ -13,12 +13,12 @@ $cartTotal.textContent = shoppingCart.length
 
 // Change Views
 function changeView(viewList, activeView) {
-  viewList.forEach(function (views) {
-    var $views = document.querySelector(views)
-    $views.classList.add('hidden')
+  viewList.forEach(function (view) {
+    var $view = document.querySelector(view)
+    $view.classList.add('hidden')
   })
-  var $view = document.querySelector(activeView)
-  $view.classList.remove('hidden')
+  var $activeView = document.querySelector(activeView)
+  $activeView.classList.remove('hidden')
 }
 
 // DOM List View
@@ -135,6 +135,7 @@ document.body.addEventListener('click', function(event) {
       if (id === item.id.toString()) {
          shoppingCart.push('item');
          $cartTotal.textContent = shoppingCart.length
-    }
-  })
-}})
+       }
+    })
+  }
+})
