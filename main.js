@@ -3,6 +3,7 @@ var $viewList = ['#items', '#details', '#checkout']
 var $listItems = document.querySelector('#items')
 var $detailItems = document.querySelector('#details')
 var $checkoutItems = document.querySelector('#checkout')
+var $quantities = ['1','2','3','4','5']
 
 // Cart Amount
 var $cart = document.querySelector('#cart')
@@ -34,6 +35,15 @@ function clearDiv(parent, child) {
   $parent.removeChild($item)
 }
 
+// build quanity values
+function buildQuantities(option) {
+  for (var i = 0; i < option.length; i++) {
+    var $option = document.createElement('option')
+    $option.setAttribute('value', option[i])
+  }
+  return $option
+}
+
 // DOM List View
 function renderListItem(item) {
   var $col = document.createElement('div')
@@ -44,6 +54,8 @@ function renderListItem(item) {
   var $itemDescription = document.createElement('p')
   var $learnMore = document.createElement('a')
   var $pWrapper = document.createElement('p')
+  var $select = document.createElement('select')
+  var $quantitySelect = buildQuantities($quantities)
   var $addToCartButton = document.createElement('a')
 
   $col.appendChild($card)
@@ -53,6 +65,8 @@ function renderListItem(item) {
   $cardBlock.appendChild($itemDescription)
   $cardBlock.appendChild($pWrapper)
   $pWrapper.appendChild($learnMore)
+  $cardBlock.appendChild($select)
+  $select.appendChild($quantitySelect)
   $cardBlock.appendChild($addToCartButton)
 
   $col.classList.add('col-sm-4', 'columns')
