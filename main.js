@@ -1,26 +1,3 @@
-var $viewList= ['#items', '#details', '#checkout']
-var $listItems = document.querySelector('#items')
-var $detailItems = document.querySelector('#details')
-var $checkoutItems = document.querySelector('#checkout')
-
-// Cart Amount
-var $cart = document.querySelector('#cart')
-var $cartTotal = document.createElement('span')
-$cartTotal.classList.add('badge', 'badge-info')
-$cart.appendChild($cartTotal)
-$cartTotal.textContent = shoppingCart.length
-
-
-// swap View
-
-function changeView(viewList, view) {
-  viewList.forEach(function (view) {
-    view.classList.add('.hidden')
-    document.querySelector('#' + 'view')
-    view.classList.remove(".hidden")
-  })
-}
-
 // DOM List View
 function renderListItem(item) {
   var $col = document.createElement('div')
@@ -64,6 +41,9 @@ function renderListItem(item) {
 
   return $col
 }
+
+// iterate through and add ITEM LIST to DOM
+var $listItems = document.querySelector('#items')
 
 itemsList.forEach(function (item) {
   var $listItem = renderListItem(item)
@@ -115,13 +95,25 @@ function renderDetail(item) {
   return $col
 }
 
+
+// Cart Amount
+var $cart = document.querySelector('li > a')
+var $cartTotal = document.createElement('span')
+$cartTotal.classList.add('badge', 'badge-info')
+$cart.appendChild($cartTotal)
+$cartTotal.textContent = shoppingCart.length
+
+
 // Click "learn more" to switch to "Detail view" and Add to cart
 document.body.addEventListener('click', function(event) {
   var id = event.target.getAttribute('data-set')
   if (event.target.textContent === "Learn More") {
   itemsList.forEach( function (item) {
     if (id === item.id.toString()) {
-    changeView('$viewList', '#details')
+    console.log(id)
+    var $itemsDetail = document.querySelector('#details')
+    $listItems.classList.add('hidden')
+    $itemsDetail.classList.remove('hidden')
     var $renderDetail = renderDetail(item)
     $itemsDetail.appendChild($renderDetail)
     }
@@ -134,8 +126,6 @@ document.body.addEventListener('click', function(event) {
     }
   })
 }})
-
-
 
 // go back
 document.body.addEventListener('click', function(event){
