@@ -30,3 +30,13 @@
   padding-right: 20px;
   padding-top: 20px;
 }
+
+.container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.badge {
+  position: absolute;
+  right: 20px;
+}
