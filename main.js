@@ -1,3 +1,26 @@
+// Global Variables
+var $viewList = ['#items', '#details', '#checkout']
+var $listItems = document.querySelector('#items')
+var $detailItems = document.querySelector('#details')
+var $checkoutItems = document.querySelector('#checkout')
+
+// Cart Amount
+var $cart = document.querySelector('#cart')
+var $cartTotal = document.createElement('span')
+$cartTotal.classList.add('badge', 'badge-info')
+$cart.appendChild($cartTotal)
+$cartTotal.textContent = shoppingCart.length
+
+// Change Views
+function changeView(viewList, activeView) {
+  viewList.forEach(function (views) {
+    var $views = document.querySelector(views)
+    $views.classList.add('hidden')
+  })
+  var $view = document.querySelector(activeView)
+  $view.classList.remove('hidden')
+}
+
 // DOM List View
 function renderListItem(item) {
   var $col = document.createElement('div')
@@ -41,9 +64,6 @@ function renderListItem(item) {
 
   return $col
 }
-
-// iterate through and add ITEM LIST to DOM
-var $listItems = document.querySelector('#items')
 
 itemsList.forEach(function (item) {
   var $listItem = renderListItem(item)
@@ -95,55 +115,26 @@ function renderDetail(item) {
   return $col
 }
 
-
-// Cart Amount
-var $cart = document.querySelector('li > a')
-var $cartTotal = document.createElement('span')
-$cartTotal.classList.add('badge', 'badge-info')
-$cart.appendChild($cartTotal)
-$cartTotal.textContent = shoppingCart.length
-
-
-// Click "learn more" to switch to "Detail view" and Add to cart
+// buttons
 document.body.addEventListener('click', function(event) {
   var id = event.target.getAttribute('data-set')
   if (event.target.textContent === "Learn More") {
   itemsList.forEach( function (item) {
     if (id === item.id.toString()) {
-    console.log(id)
-    var $itemsDetail = document.querySelector('#details')
-    $listItems.classList.add('hidden')
-    $itemsDetail.classList.remove('hidden')
+    changeView($viewList, '#details')
     var $renderDetail = renderDetail(item)
-    $itemsDetail.appendChild($renderDetail)
+    $detailItems.appendChild($renderDetail)
     }
   })
-} else if (event.target.textContent === "Add to Cart") {
-  itemsList.forEach( function (item) {
-    if (id === item.id.toString()) {
-       shoppingCart.push('item');
-       $cartTotal.textContent = shoppingCart.length
+  } else if (event.target.getAttribute('data-set') === 'back') {
+    changeView($viewList, '#items')
+    var $itemDescription = document.querySelector('.details')
+    $detailItems.removeChild($itemDescription)
+  } else if (event.target.textContent === "Add to Cart") {
+    itemsList.forEach( function (item) {
+      if (id === item.id.toString()) {
+         shoppingCart.push('item');
+         $cartTotal.textContent = shoppingCart.length
     }
   })
 }})
-
-// go back
-document.body.addEventListener('click', function(event){
-  var id = event.target.getAttribute('data-set')
-  var $buttonId = document.body.querySelector('.btn')
-  switch (event.target.getAttribute('data-set')) {
-    case "addToCart":
-      console.log('yayay')
-      break;
-    case "back":
-    if (event.target.getAttribute('data-set') === 'back')  {
-      $listItems.classList.remove('hidden')
-      var $itemsDetail = document.querySelector('#details')
-      $itemsDetail.classList.add('hidden')
-      var $itemsDetailList = document.querySelector('.details')
-      $itemsDetail.removeChild($itemsDetailList)
-      break;
-    }
-    default:
-  }
-})
