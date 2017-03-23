@@ -40,3 +40,16 @@
   position: absolute;
   right: 20px;
 }
+
+select {
+  margin-right: 10px;
+}
+
+.checkout-product > h4 {
+  margin-left: 20px;
+}
+
+.checkout-image > img {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}

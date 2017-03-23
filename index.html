@@ -13,14 +13,14 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a id="logo-font" class="navbar-brand" href="#">
+      <a id="logo-font" class="navbar-brand home" href="#">
         <img src="images/bespoke1.png" width="30" height="30" class="d-inline-block align-top" alt="">
         Bespoken Words
       </a>
       <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a id="cart" class="nav-link" href="#"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><span class="sr-only">(current)</span></a>
+            <a id="cart" class="cart nav-link" href="#"><i id="shopping-cart" class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>
@@ -28,16 +28,108 @@
 
     <!-- items -->
     <div id="catalog" class="container">
+
+      <!-- jumbotron -->
+      <div id="carousel">
+      </div>
       <!-- list view -->
       <div id="items" class="row">
       </div>
       <!-- Detail View -->
-      <div id="details" class="row">
+      <div id="details" class="row hidden">
       </div>
       <!-- Checkout View -->
-      <div id="checkout" class="row">
+      <div id="checkout" class="row hidden">
+        <div class="col-sm-12 columns">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <div class="row">
+                  <div class="col-sm-6 columns">
+                    <h3><i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</h3>
+                  </div>
+                  <div class="col-sm-6 columns">
+                    <button type="button" class="btn btn-primary btn-sm btn-block">
+                      <i class="fa fa-share" aria-hidden="true"></i> Continue shopping
+                    </button>
+                  </div>
+                </div>
+              </h3>
+            </div>
+            <div class="card-block">
+              <div class="row">
+                <div class="col-sm-2 checkout-image">
+                  <img class="img-responsive" src="http://placehold.it/100x70">
+                </div>
+                <div class="col-sm-6 checkout-product">
+                  <h4 class="product-name"><strong>Product name</strong></h4>
+                  <h4>Product description</h4>
+                </div>
+                <div class="col-sm-4">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <h6 class="cost"><strong>25.00 <span class="text-muted">x</span></strong></h6>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Text input">
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <button type="button" class="btn btn-link">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-2 checkout-image">
+                  <img class="img-responsive" src="http://placehold.it/100x70">
+                </div>
+                <div class="col-sm-6 checkout-product">
+                  <h4 class="product-name"><strong>Product name</strong></h4>
+                  <h4>Product description</h4>
+                </div>
+                <div class="col-sm-4">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <h6 class="text-right cost"><strong>25.00 <span class="text-muted">x</span></strong></h6>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Text input">
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <button type="button" class="btn btn-link">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-sm-9">
+                  <h4 class="text-right">Total <strong>$50.00</strong></h4>
+                </div>
+                <div class="col-sm-3">
+                  <button type="button" class="btn btn-success btn-block">
+                    Checkout
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+
+
     <script src="inventory.js"></script>
     <script src="main.js"></script>
   </body>
