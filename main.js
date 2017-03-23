@@ -14,33 +14,48 @@ $cartTotal.id = 'badge-cart'
 $cart.appendChild($cartTotal)
 $cartTotal.textContent = shoppingCart.length
 
+
+
+
+
 // Change Views
 function changeView(viewList, activeView) {
   viewList.forEach(function (view) {
     var $view = document.querySelector(view)
     $view.classList.add('hidden')
   })
-  // if (activeView === '#items') {
-  //   $carouselItems.classList.remove('hidden')
-  // }
   var $activeView = document.querySelector(activeView)
   $activeView.classList.remove('hidden')
 }
 
 // Add to Cart
-function addToCart(item) {
-  shoppingCart.push(item);
+function addToCart(item, quantity) {
+  for (var i = 0; i < quantity; i++) {
+    shoppingCart.push(item);
+  }
+  console.log(item)
   $cartTotal.textContent = shoppingCart.length
+  var $checkout = document.querySelector('#shopping-checkout')
+  shoppingCart.forEach(function (item) {
+    var $row = renderCheckout(item)
+    $checkout.appendChild($row)
+  })
 }
 
 // Find Item
 function findItem(items, id) {
+  var foundItem = 0
   items.forEach( function (item) {
     if (id === item.id.toString()) {
-      console.log(item)
-      return item
+      foundItem = item
     }
   })
+  return foundItem
+}
+
+function findQuantity(id) {
+  return document.querySelector('select[data-set="' + id + '"]').value
+  console.log(document.querySelector('select[data-set="' + id + '"]').value)
 }
 
 // Clear div
@@ -51,32 +66,83 @@ function clearDiv(parent, child) {
 }
 
 // build quanity values
-function buildQuantities(option) {
+function buildQuantities(quantities) {
   var $select = document.createElement('select')
-  for (var i = 0; i < option.length; i++) {
+  for (var i = 0; i < quantities.length; i++) {
     var $option = document.createElement('option')
-    $option.setAttribute('value', option[i])
-    $option.textContent = option[i]
+    $option.setAttribute('value', quantities[i])
+    $option.textContent = quantities[i]
     $select.appendChild($option)
   }
   return $select
 }
-
 // build Checkout
-//
+function renderCheckout(shoppingArrayItem) {
+  var $row = document.createElement('div')
+  var $colImage = document.createElement('div')
+  var $colProduct = document.createElement('div')
+  var $img = document.createElement('img')
+  var $itemName = document.createElement('h4')
+  var $itemDescription = document.createElement('h6')
+  var $colSmFour = document.createElement('div')
+  var $rowRight = document.createElement('div')
+  var $colLargeThree = document.createElement('div')
+  var $itemCost = document.createElement('h6')
+  var $colLargeSeven = document.createElement('div')
+  var $inputGroup = document.createElement('div')
+  var $itemAmount = document.createElement('input')
+  var $colLargeTwo = document.createElement('div')
+  var $trashButton = document.createElement('button')
+  var $trashIcon = document.createElement('i')
+  var $horizontal = document.createElement('HR')
 
+  $row.appendChild($colImage)
+  $colImage.appendChild($img)
+  $row.appendChild($colProduct)
+  $colProduct.appendChild($itemName)
+  $colProduct.appendChild($itemDescription)
+  $row.appendChild($colSmFour)
+  $colSmFour.appendChild($rowRight)
+  $rowRight.appendChild($colLargeThree)
+  $colLargeThree.appendChild($itemCost)
+  $rowRight.appendChild($colLargeSeven)
+  $colLargeSeven.appendChild($inputGroup)
+  $inputGroup.appendChild($itemAmount)
+  $rowRight.appendChild($colLargeTwo)
+  $colLargeTwo.appendChild($trashButton)
+  $trashButton.appendChild($trashIcon)
+  $row.appendChild($horizontal)
 
+  $row.classList.add('row', 'columns')
+  $colImage.classList.add('col-sm-2', 'checkout-image')
+  $colProduct.classList.add('col-sm-7', 'checkout-items')
+  $img.classList.add('img-fluid')
+  $itemName.classList.add('product-name','checkout-product')
+  $itemDescription.classList.add('product-description')
+  $colSmFour.classList.add('col-sm-3', 'checkout-items')
+  $rowRight.classList.add('row')
+  $colLargeThree.classList.add('col-lg-4')
+  $itemCost.classList.add('cost', 'checkout-items')
+  $colLargeSeven.classList.add('col-lg-4')
+  $inputGroup.classList.add('input-group')
+  $itemAmount.classList.add('form-control')
+  $colLargeTwo.classList.add('col-lg-4')
+  $trashButton.classList.add('btn','btn-link')
+  $trashIcon.classList.add('fa','fa-trash')
 
-// function renderCheckout(item) {
-//   var $colTwelve = document.createElement('div')
-//   var $card = document.createElement('div')
-//   var $cardHeader = document.createElement('div')
-//   var $cardTitle = document.createElement('h3')
-//   var $rowHeader = document.createElement('div')
-//   var $colSixOne = document.createElement('div')
-//   var $colSixTwo = document.createElement('div')
-//   var $checkOut = document.createElement('h3')
-//   var $cartIcon = document.createElement('i')
+  $img.setAttribute('src', shoppingArrayItem.imageList)
+  $itemAmount.setAttribute('type','text')
+  $itemAmount.setAttribute('aria-label', 'Text input')
+  $trashButton.setAttribute('type', 'button')
+  $trashIcon.setAttribute('aria-hidden', 'true')
+
+  $itemName.textContent = shoppingArrayItem.name
+  $itemDescription.textContent = shoppingArrayItem.descriptionList
+  $itemCost.textContent = shoppingArrayItem.cost
+
+  return $row
+}
+
 //   var $continueButton = document.createElement('button')
 //   var $shareIcon = document.createElement('i')
 //   var $cardBlock = document.createElement('div')
@@ -228,7 +294,7 @@ function renderListItem(item) {
   var $itemDescription = document.createElement('p')
   var $learnMore = document.createElement('a')
   var $pWrapper = document.createElement('p')
-  var $quantitySelect = buildQuantities($quantities)
+  var $selectQuantities = buildQuantities($quantities)
   var $addToCartButton = document.createElement('a')
 
   $col.appendChild($card)
@@ -238,7 +304,7 @@ function renderListItem(item) {
   $cardBlock.appendChild($itemDescription)
   $cardBlock.appendChild($pWrapper)
   $pWrapper.appendChild($learnMore)
-  $cardBlock.appendChild($quantitySelect)
+  $cardBlock.appendChild($selectQuantities)
   $cardBlock.appendChild($addToCartButton)
 
   $col.classList.add('col-sm-4', 'columns')
@@ -251,7 +317,7 @@ function renderListItem(item) {
   $addToCartButton.classList.add('btn', 'btn-primary')
   $addToCartButton.setAttribute('href', "javaScript:void(0);")
   $addToCartButton.setAttribute('data-set', item.id)
-  $quantitySelect.setAttribute('data-set', item.id)
+  $selectQuantities.setAttribute('data-set', item.id)
   $image.setAttribute('src', item.imageList)
   $image.setAttribute('data-set', item.id)
   $learnMore.setAttribute('href', item.link)
@@ -281,7 +347,7 @@ function renderDetail(item) {
   var $itemCost = document.createElement('p')
   var $addToCartButton = document.createElement('a')
   var $cancelButton = document.createElement('a')
-  var $quantitySelect = buildQuantities($quantities)
+  var $selectQuantities = buildQuantities($quantities)
 
   $col.appendChild($card)
   $card.appendChild($image)
@@ -289,7 +355,7 @@ function renderDetail(item) {
   $cardBlock.appendChild($itemName)
   $cardBlock.appendChild($itemDescription)
   $cardBlock.appendChild($itemCost)
-  $cardBlock.appendChild($quantitySelect)
+  $cardBlock.appendChild($selectQuantities)
   $cardBlock.appendChild($addToCartButton)
   $cardBlock.appendChild($cancelButton)
 
@@ -305,9 +371,10 @@ function renderDetail(item) {
   $addToCartButton.setAttribute('data-set', item.id)
   $cancelButton.classList.add('btn', 'btn-margin', 'btn-secondary')
   $addToCartButton.setAttribute('href', "javaScript:void(0);")
-  $quantitySelect.setAttribute('data-set', item.id)
+  $selectQuantities.setAttribute('data-set', item.id)
   $cancelButton.setAttribute('data-set', 'back')
   $image.setAttribute('src', item.imageDetail)
+
 
   $itemName.textContent = item.namexw
   $itemDescription.textContent = item.descriptionDetail
@@ -322,19 +389,23 @@ function renderDetail(item) {
 document.body.addEventListener('click', function(event) {
   var id = event.target.getAttribute('data-set')
   if (event.target.textContent === "Learn More") {
-        findItem(itemsList, id)
+        var item = findItem(itemsList, id)
         var $renderDetail = renderDetail(item)
-
+        $detailItems.appendChild($renderDetail)
         changeView($viewList, '#details')
   } else if (event.target.getAttribute('data-set') === 'back') {
       changeView($viewList, '#items')
       clearDiv('#details', '.details')
   } else if (event.target.textContent === "Add to Cart") {
-      findItem(itemsList, id)
-      addToCart(items)
+      var item = findItem(itemsList, id)
+      var qty = findQuantity(id)
+      addToCart(item, qty)
   } else if (event.target.id === 'shopping-cart') {
+      console.log(item)
       changeView($viewList, '#checkout')
   } else if (event.target.id === 'logo-font') {
       changeView($viewList, '#items')
-  }
+  } else if (event.target.id === 'continue')
+    changeView($viewList, '#items')
 })
+//
