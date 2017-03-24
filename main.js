@@ -11,19 +11,10 @@ var $quantities = ['1','2','3','4','5']
 var $cart = document.querySelector('#cart')
 var $cartTotal = document.createElement('span')
 $cartTotal.classList.add('badge', 'badge-info')
+$cartTotal.setAttribute('data-set', 'shopping-cart')
 $cartTotal.id = 'badge-cart'
 $cart.appendChild($cartTotal)
 $cartTotal.textContent = shoppingCart.length
-
-
-function calculateTotal(shoppingArray) {
-  var total = 0
-  shoppingArray.forEach(function (item){
-    total += item.cost
-  })
-  var total = Math.max( Math.round(total * 10) / 10, 2.8 ).toFixed(2);
-  return total
-  }
 
 // Change Views
 function changeView(viewList, activeView) {
@@ -35,20 +26,42 @@ function changeView(viewList, activeView) {
   $activeView.classList.remove('hidden')
 }
 
+function calculateTotal(shoppingArray) {
+  var total = 0
+  shoppingArray.forEach(function (item){
+    total += item.cost
+  })
+  var total = Math.max( Math.round(total * 10) / 10, 2.8 ).toFixed(2);
+  return total
+  }
+
 // Add to Cart
 function addToCart(item, quantity) {
-  for (var i = 0; i < quantity; i++) {
-    shoppingCart.push(item);
-    var $checkout = document.querySelector('#shopping-checkout')
-    var $row = renderCheckout(item)
-    $checkout.appendChild($row)
+
+  if (item !== undefined) {
+    //creeate new cart item
+    var cartItem = {
+        id: item.id,
+        name: item.name,
+        descriptionList: item.descriptionList,
+        cost: item.cost,
+        imageList: item.imageList,
+        qty: quantity
+      }
+  } else {
+    cartItem.qty += quantity
   }
-  console.log(shoppingCart)
+shoppingCart.push(cartItem)
+  console.log(cartItem)
+
+  var $checkout = document.querySelector('#shopping-checkout')
+  var $row = renderCheckout(cartItem)
+  $checkout.appendChild($row)
   var total = calculateTotal(shoppingCart)
   var $total = document.querySelector('#total')
   $total.textContent = '$' + total
 
-  $cartTotal.textContent = shoppingCart.length
+  $cartTotal.textContent = cartItem.qty
 }
 
 // Find Item
@@ -411,8 +424,7 @@ document.body.addEventListener('click', function(event) {
       var item = findItem(itemsList, id)
       var qty = findQuantity(id)
       addToCart(item, qty)
-  } else if (event.target.id === 'shopping-cart') {
-      console.log(item)
+  } else if (event.target.getAttribute('data-set') === 'shopping-cart') {
       changeView($viewList, '#checkout')
   } else if (event.target.id === 'logo-font') {
       changeView($viewList, '#items')

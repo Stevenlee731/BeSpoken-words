@@ -38,7 +38,12 @@
 
 .badge {
   position: absolute;
-  right: 20px;
+  right: 10px;
+  width: 30px;
+}
+
+.badge:hover {
+  color: grey;
 }
 
 select {
@@ -61,4 +66,8 @@ select {
 
 .total {
   margin-top: 5px;
+}
+
+#shopping-cart {
+  padding: 1px;
 }
