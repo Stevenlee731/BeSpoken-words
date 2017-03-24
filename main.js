@@ -3,6 +3,7 @@ var $viewList = ['#items', '#details', '#checkout']
 var $listItems = document.querySelector('#items')
 var $detailItems = document.querySelector('#details')
 var $checkoutItems = document.querySelector('#checkout')
+var $signup = document.querySelector('#signup')
 // var $carouselItems = document.querySelector('#carousel')
 var $quantities = ['1','2','3','4','5']
 
@@ -20,11 +21,9 @@ function calculateTotal(shoppingArray) {
   shoppingArray.forEach(function (item){
     total += item.cost
   })
+  var total = Math.max( Math.round(total * 10) / 10, 2.8 ).toFixed(2);
   return total
   }
-
-
-
 
 // Change Views
 function changeView(viewList, activeView) {
@@ -419,7 +418,7 @@ document.body.addEventListener('click', function(event) {
       changeView($viewList, '#items')
   } else if (event.target.id === 'continue')
     changeView($viewList, '#items')
-  } 
+  }
 
 )
 //
