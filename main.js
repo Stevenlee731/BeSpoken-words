@@ -15,6 +15,14 @@ $cart.appendChild($cartTotal)
 $cartTotal.textContent = shoppingCart.length
 
 
+function calculateTotal(shoppingArray) {
+  var total = 0
+  shoppingArray.forEach(function (item){
+    total += item.cost
+  })
+  return total
+  }
+
 
 
 
@@ -32,14 +40,16 @@ function changeView(viewList, activeView) {
 function addToCart(item, quantity) {
   for (var i = 0; i < quantity; i++) {
     shoppingCart.push(item);
-  }
-  console.log(item)
-  $cartTotal.textContent = shoppingCart.length
-  var $checkout = document.querySelector('#shopping-checkout')
-  shoppingCart.forEach(function (item) {
+    var $checkout = document.querySelector('#shopping-checkout')
     var $row = renderCheckout(item)
     $checkout.appendChild($row)
-  })
+  }
+  console.log(shoppingCart)
+  var total = calculateTotal(shoppingCart)
+  var $total = document.querySelector('#total')
+  $total.textContent = '$' + total
+
+  $cartTotal.textContent = shoppingCart.length
 }
 
 // Find Item
@@ -134,7 +144,9 @@ function renderCheckout(shoppingArrayItem) {
   $itemAmount.setAttribute('type','text')
   $itemAmount.setAttribute('aria-label', 'Text input')
   $trashButton.setAttribute('type', 'button')
+  $trashButton.setAttribute('data-set', shoppingArrayItem.id)
   $trashIcon.setAttribute('aria-hidden', 'true')
+  $row.setAttribute('data-set', shoppingArrayItem.id)
 
   $itemName.textContent = shoppingArrayItem.name
   $itemDescription.textContent = shoppingArrayItem.descriptionList
@@ -407,5 +419,7 @@ document.body.addEventListener('click', function(event) {
       changeView($viewList, '#items')
   } else if (event.target.id === 'continue')
     changeView($viewList, '#items')
-})
+  } 
+
+)
 //

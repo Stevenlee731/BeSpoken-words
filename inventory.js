@@ -8,7 +8,7 @@ var itemsList = [
     link: '#',
     addToCartButton: 'Add to Cart',
     cancelButton: 'Go Back',
-    cost: '$13.99',
+    cost: 13.99,
     imageList: 'images/10057683GLargeSoftRuledNotebook_600.jpg',
     imageDetail: 'images/Moleskin-detail.jpg'
   },
@@ -21,7 +21,7 @@ var itemsList = [
     link: '#',
     addToCartButton: 'Add to Cart',
     cancelButton: 'Go Back',
-    cost: '$13.99',
+    cost: 13.99,
     imageList: 'images/10068166MediumPoppingSoftCoverNotebo.jpg',
     imageDetail: 'images/poppin-detail.jpg'
   },
@@ -34,7 +34,7 @@ var itemsList = [
     link: '#',
     addToCartButton: 'Add to Cart',
     cancelButton: 'Go Back',
-    cost: '$13.99',
+    cost: 13.99,
     imageList: 'images/Confidant_Perspective_v03.jpg',
     imageDetail: 'images/baron-fig-notebook-xl.jpg'
   },
@@ -47,7 +47,7 @@ var itemsList = [
     link: '#',
     addToCartButton: 'Add to Cart',
     cancelButton: 'Go Back',
-    cost: '$8.99',
+    cost: 8.99,
     imageList: 'images/FN-02-Original-Ruled-B.jpg',
     imageDetail: 'images/fieldnotes.jpg'
   },
@@ -60,7 +60,7 @@ var itemsList = [
     link: '#',
     addToCartButton: 'Add to Cart',
     cancelButton: 'Go Back',
-    cost: '$21.99',
+    cost: 21.99,
     imageList: 'images/b1-253x300.png',
     imageDetail: 'images/Monsieur-detail.jpg'
   },
@@ -73,7 +73,7 @@ var itemsList = [
     link: '#',
     addToCartButton: 'Add to Cart',
     cancelButton: 'Go Back',
-    cost: '$19.99',
+    cost: 19.99,
     imageList: 'images/bullet-journal.jpg',
     imageDetail: 'images/Leuchtturm.jpg'
   }

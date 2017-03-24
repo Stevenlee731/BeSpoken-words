@@ -58,3 +58,7 @@ select {
 .checkout-items {
   margin-top: 10px;
 }
+
+.total {
+  margin-top: 5px;
+}
